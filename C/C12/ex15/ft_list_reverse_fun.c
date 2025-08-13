@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
+/*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/12 23:56:45 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/08/14 00:44:09 by cel-hajj         ###   ########.fr       */
+/*   Created: 2025/08/13 14:47:52 by cel-hajj          #+#    #+#             */
+/*   Updated: 2025/08/14 00:55:54 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_list_push_back(t_list **begin_list, void	*data)
+void	ft_list_reverse_fun(t_list *begin_list)
 {
-	t_list	*element;
-	t_list	*temp;
+	t_list	*current;
+	t_list	*next_val;
+	void	*temp;
 
-	element = ft_create_elem(data);
-	if (element == NULL)
-		return ;
-	if (*begin_list == NULL)
-		*begin_list = element;
-	else
+	if (!begin_list || !begin_list->next)
+		return; 
+	current = begin_list;
+	while (current->next)
 	{
-		temp = *begin_list;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = element;
+		next_val = current->next;
+		while (next_val)
+		{
+			temp = current->data;
+			current->data = next_val->data;
+			next_val->data = temp;
+			next_val = next_val->next;
+		}
+		current = current->next;
 	}
 }
 
@@ -62,21 +66,27 @@ int	main(void)
 	int	b = 2;
 	int	c = 3;
 	int d = 8;
+	int	e = 9;
+	int	f = 1;
 
 	void	*data1 = &a;
 	void	*data2 = &b;
 	void	*data3 = &c;
 	void	*data4 = &d;
+	void	*data5 = &e;
+	void	*data6 = &f;
 
 	llist = ft_create_elem(data1);
 	llist->next = ft_create_elem(data2);
 	llist->next->next = ft_create_elem(data3);
+	llist->next->next->next = ft_create_elem(data4);
+	llist->next->next->next->next = ft_create_elem(data5);
+	llist->next->next->next->next->next = ft_create_elem(data6);
 
-	printf("Original Array\n");
+	printf("Original Array:\n");
 	print_array(llist);
-
-	printf("After Inserting\n");
-	ft_list_push_back(&llist, data4);
+	printf("Reversed Array:\n");
+	ft_list_reverse_fun(llist);
 	print_array(llist);
 
 	free(llist);

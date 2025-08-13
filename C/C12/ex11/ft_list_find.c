@@ -6,7 +6,7 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 12:38:48 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/08/13 13:10:51 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:11:03 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ int	main(void)
 	printf("Here is the array:\n");
 	print_array(llist);
 	
-	printf("Here is the first element equals to 4: %d\n", *(int *)ft_list_find(llist, datacomp, &cmp)->data);
+	int result = *(int *)ft_list_find(llist, datacomp, &cmp)->data;
+	printf("Here is the 1st element == to 4: %d\n", result);
 
 	free(llist);
 }

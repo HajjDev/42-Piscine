@@ -6,14 +6,14 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 12:35:31 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/08/13 13:07:10 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:09:48 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_list_foreach_if(t_list *begin_list, void (*f)(void *), void 
-	*data_ref, int (*cmp)())
+void	ft_list_foreach_if(t_list *begin_list, void (*f)(void *), void
+*data_ref, int (*cmp)())
 {
 	while (begin_list)
 	{

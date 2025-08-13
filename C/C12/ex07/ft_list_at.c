@@ -6,7 +6,7 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 11:51:26 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/08/13 11:59:46 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:09:07 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 	return (NULL);
 }
 
-#include "ft_list.h"
-
+/*
 t_list	*ft_create_elem(void *data)
 {
 	t_list	*to_add_elem;
@@ -89,8 +88,10 @@ int	main(void)
 	char	*strs[] = {"Hola", "Como", "Vas", "Bien"};
 	t_list	*llist = ft_list_push_strs(4, strs);
 
-	printf("The 4th element of the list is: %s\n", (char *)ft_list_at(llist, 3)->data);
-	printf("The 1st element of the list is: %s\n", (char *)ft_list_at(llist, 0)->data);
+	printf("The 4th element is: %s\n", (char *)ft_list_at(llist, 3)->data);
+	printf("The 1st element is: %s\n", (char *)ft_list_at(llist, 0)->data);
 	printf("The 8th element of the list is: %p\n", (char *)ft_list_at(llist, 8));
 	free(llist);
 }
+
+*/
