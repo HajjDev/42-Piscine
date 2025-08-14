@@ -6,67 +6,56 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 15:58:42 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/08/14 00:46:10 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/08/14 11:07:30 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-int	beginning_check(t_list **begin_list, t_list *element_to_add,
-void *data, int (*cmp)())
+void	ft_list_sort(t_list **begin_list, int (*cmp)())
 {
 	t_list	*current;
+	void	*temp;
 
-	current = *begin_list;
-	if (!element_to_add)
-		return (0);
-	if (!current)
-	{
-		*begin_list = element_to_add;
-		return (1);
-	}
-	if ((*cmp)(data, current->data) < 0)
-	{
-		element_to_add->next = current;
-		*begin_list = element_to_add;
-		return (1);
-	}
-	return (0);
-}
-
-void	ft_sorted_list_insert(t_list **begin_list, void *data, int (*cmp)())
-{
-	t_list	*current;
-	t_list	*element_to_add;
-
-	current = *begin_list;
-	element_to_add = ft_create_elem(data);
-	if (!element_to_add)
+	if (!begin_list || !*begin_list)
 		return ;
-	if (!beginning_check(begin_list, element_to_add, data, cmp))
+	current = *begin_list;
+	while (current->next)
 	{
-		while (current->next)
+		if ((*cmp)(current->data, current->next->data) > 0)
 		{
-			if ((*cmp)(data, current->next->data) < 0)
-			{
-				element_to_add->next = current->next;
-				current->next = element_to_add;
-				return ;
-			}
-			current = current->next;
+			temp = current->data;
+			current->data = current->next->data;
+			current->next->data = temp;
+			current = *begin_list;
+			continue ;
 		}
-		current->next = element_to_add;
+		current = current->next;
 	}
 }
 
 void	ft_sorted_list_merge(t_list **begin_list1, t_list *begin_list2, int
 (*cmp)())
 {
-	while (begin_list2)
+	t_list	*current;
+	t_list	*last_element;
+
+	if (!begin_list1 || !cmp)
+		return ;
+	if (!*begin_list1)
 	{
-		ft_sorted_list_insert(begin_list1, begin_list2->data, cmp);
-		begin_list2 = begin_list2->next;
+		*begin_list1 = begin_list2;
+		return ;
 	}
+	if (!begin_list2)
+		return ;
+	current = *begin_list1;
+	last_element = current;
+	while (last_element->next)
+		last_element = last_element->next;
+	last_element->next = begin_list2;
+	ft_list_sort(&current, cmp);
+	*begin_list1 = current;
 }
 
 /*

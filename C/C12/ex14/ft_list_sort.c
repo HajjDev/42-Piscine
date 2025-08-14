@@ -6,7 +6,7 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:24:10 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/08/14 00:50:00 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/08/14 10:46:46 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_list_sort(t_list **begin_list, int (*cmp)())
 	void	*temp;
 
 	if (!begin_list || !*begin_list)
-        return;
+		return ;
 	current = *begin_list;
 	while (current->next)
 	{
@@ -28,12 +28,13 @@ void	ft_list_sort(t_list **begin_list, int (*cmp)())
 			current->data = current->next->data;
 			current->next->data = temp;
 			current = *begin_list;
-			continue;
+			continue ;
 		}
 		current = current->next;
 	}
 }
 
+/*
 #include <stdio.h>
 
 void	print_array(t_list *llist)
@@ -94,3 +95,4 @@ int	main(void)
 
 	free(llist);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:47:52 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/08/14 00:55:54 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/08/14 10:46:56 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_list_reverse_fun(t_list *begin_list)
 	void	*temp;
 
 	if (!begin_list || !begin_list->next)
-		return; 
+		return ;
 	current = begin_list;
 	while (current->next)
 	{
