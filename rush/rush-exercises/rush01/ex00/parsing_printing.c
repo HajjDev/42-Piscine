@@ -31,22 +31,26 @@ int	set_clue(int clues[4][4], int clue_idx, char ch)
 int	parse_input(char *input, int clues[4][4])
 {
 	int	i;
-	int	clue_idx;
+	int	n;
 
 	i = 0;
-	clue_idx = 0;
-	while (input[i])
+	n = 0;
+	while (n < 16)
 	{
-		while (input[i] && is_space(input[i]))
-			i++;
-		if (!input[i])
-			break ;
-		if (!set_clue(clues, clue_idx, input[i]))
+		if (!set_clue(clues, n, input[i]))
 			return (0);
-		clue_idx++;
 		i++;
+		n++;
+		if (n < 16)
+		{
+			if (input[i] != ' ')
+				return (0);
+			i++;
+		}
 	}
-	return (clue_idx == 16);
+	if (input[i] != '\0')
+		return (0);
+	return (1);
 }
 
 void	print_grid(int grid[4][4])
