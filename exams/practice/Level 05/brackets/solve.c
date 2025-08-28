@@ -6,12 +6,11 @@
 /*   By: cel-hajj <cel-hajj@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 21:13:32 by cel-hajj          #+#    #+#             */
-/*   Updated: 2025/08/26 21:28:34 by cel-hajj         ###   ########.fr       */
+/*   Updated: 2025/08/27 23:43:40 by cel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "brackets.h"
-#include <stdio.h>
 
 void	ft_solve(char *str)
 {
@@ -42,6 +41,11 @@ void	ft_solve(char *str)
             }
         }
         i--;
+    }
+    if (brackets[0])
+    {
+        error();
+        return ;
     }
     write(1, "OK\n", 3);
     return ;
